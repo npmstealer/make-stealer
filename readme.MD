@@ -1,4 +1,4 @@
-# Stealers Modules
+# Stealers Modules 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
@@ -129,5 +129,6 @@ screenshot('print.png', 'webhook here')
 ---
 
 > **⚠️ Lembre-se**: Use este software de forma responsável e ética. A segurança da informação deve sempre respeitar a privacidade e os direitos dos usuários.
+
 
 
